@@ -47,9 +47,13 @@ body {
 <form action="" method="POST">
 
         <h1>Agregar Prueba</h1>
+        <!-- Campo de entrada de texto para nombre de la prueba-->
         <input type="text" name="nombre_prueba" placeholder="Nombre de la prueba" required>
+        <!-- Campo de entrada de texto para el tipo de la prueba-->
         <input type="text" name="tipo_prueba" placeholder="Tipo de prueba" required>
-        <button class="btn" type="submit" name="enviar">Enviar</button>
+       <!-- Boton de envio del formulario-->
+       <button class="btn" type="submit" name="enviar">Enviar</button>
+        <!-- Enlace para regresar a la pagina inicial de consultorio-->
         <a href="index_prueba_lab.php">Regresar</a>
 </body>
 </section>

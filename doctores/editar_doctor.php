@@ -103,7 +103,9 @@ body {
     }
     ?>
     </select>
+        <!-- Boton de envio del formulario-->
         <button class="btn" type="submit" name="enviar">Enviar</button>
+        <!-- Enlace para regresar a la pagina inicial de doctor-->
         <a href="index_doctor.php">Regresar</a>
 </body>
 </section>

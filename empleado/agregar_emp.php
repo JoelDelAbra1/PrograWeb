@@ -7,17 +7,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Agregar Empleado</title>
     <link rel="stylesheet" href="../estilos.css">
+    <link rel="stylesheet" href="../styles.css">
 </head>
 
 <body>
-    <style>
-        body {
-            background-image: url('../fondo2.webp');
-            background-repeat: no-repeat;
-            background-attachment: fixed;
-            background-size: 100% 100%;
-        }
-    </style>
+ 
     <section class="form">
         <h1>Agregar Empleado</h1>
         <?php
@@ -63,18 +57,27 @@
     }
     ?>
         <form action="" method="POST">
+            <!-- Campo de entrada de texto para el nombre del empleado-->
             <input type="text" name="nombre_empleado" placeholder="Nombre" required>
+            <!-- Campo de entrada de texto para el apellido paterno del empleado-->
             <input type="text" name="apellido_paterno" placeholder="Apellido paterno" required>
-            <input type="text" name="apellido_materno" placeholder="Apellido Materno" required>
+        <!-- Campo de entrada de texto para el apellido materno del empleado-->
+        <input type="text" name="apellido_materno" placeholder="Apellido Materno" required>
             <input type="text" name="ocupacion_empleado" placeholder="Ocupacion" required>
-            <input type="text" name="colonia_empleado" placeholder="Colonia" required>
-            <input type="text" name="calle_empleado" placeholder="Calle" required>
+        <!-- Campo de entrada de texto para la colonia del empleado-->
+        <input type="text" name="colonia_empleado" placeholder="Colonia" required>
+        <!-- Campo de entrada de texto para la calle  empleado-->
+        <input type="text" name="calle_empleado" placeholder="Calle" required>
             <input type="text" name="numerocasa_empleado" placeholder="Numero Casa" required>
+             <!-- Campo de entrada de telefono para el telefono del empleado-->
             <input type="tel" name="telefono_empleado" placeholder="Telefono" required>
+            <!-- Campo de entrada de email para el usuario del empleado-->
             <input type="email" name="usuario" placeholder="Usuario" required>
+            <!-- Campo de entrada de texto para la contrasela del empleado-->
             <input type="text" name="pass" placeholder="Contraseña" required>
             <label for="">Fecha de Nacimineto:</label>
-            <input type="date" name="fecha_nac" placeholder="Fecha de Nacimineto" required>
+            <!-- Campo de entrada de fecha para la fecha de nacimiento del empleado-->
+           <input type="date" name="fecha_nac" placeholder="Fecha de Nacimineto" required>
             <label for="">Sucursal:</label>
             <select name="id_sucursal" id="">
 
@@ -122,7 +125,9 @@
         ?>
 
             </select>
+            <!-- Boton de envio del formulario-->
             <button type="submit" name="enviar">Enviar</button>
+             <!-- Enlace para regresar a la pagina inicial de empleado-->
             <a href="index_emp.php">Regresar</a>
     </section>
 </body>

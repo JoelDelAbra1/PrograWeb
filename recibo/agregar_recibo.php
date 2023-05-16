@@ -1,3 +1,5 @@
+<!--Archivo agregar_recibo.php 
+    Archivo para agregar una nueva sucursal-->
 <?php
 include("../conexion.php");
 ?>
@@ -9,42 +11,44 @@ include("../conexion.php");
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Agregar Recibo</title>
     <link rel="stylesheet" href="../estilos.css">
+    <link rel="stylesheet" href="../styles.css">
 </head>
 <body>
     <section class="form">
-<style>
-body {
-  background-image: url('../fondo2.webp');
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  background-size: 100% 100%;
-}
-</style>
+
     <?php
-    if(isset($_POST['enviar'])){ //presiona el boton
+    // Verificar si el formulario ha sido enviado
+    if(isset($_POST['enviar'])){ 
+        // Se incluye el archivo de conexión a la base de datos   
         include("../conexion.php");    
-        
+
+        // Se recuperan los datos que se tienen en los campos
        $id_cita=$_POST['id_cita'];
        $costo=$_POST['costo'];
        $fecha_generacion=$_POST['fecha_generacion'];
        $hora_generacion=$_POST['hora_generacion'];
-       
 
+       // Se inserta la información en la base de datos
         $sql="INSERT INTO recibo(id_cita,costo,fecha_generacion,hora_generacion) 
         VALUES ( '$id_cita', '$costo'
         , '$fecha_generacion', '$hora_generacion')";
         $resultado = mysqli_query($conexion,$sql);
         if($resultado){
+            // Verificar si la inserción fue exitosa
+            // Si la inserción es exitosa, se muestra un mensaje de éxito y se redirige a la página principal
+
             echo" <script languaje = 'JavaScript'>
             alert('Los datos fueron guardados');
             location.assign('../citas/index_citas.php');
             </script>";
         }else{
+             // Si la inserción falla, se muestra un mensaje de error y se redirige a la página principal de sucursal
             echo" <script languaje = 'JavaScript'>
             alert('ERROR: Los datos NO fueron guardados');
             location.assign('index_citas.php');
             </script>";
         }
+        // Se cierra la conexión a la base de datos
         mysqli_close($conexion);
     }else{ //Recuperar los datos y mostrarlos en los input
         
@@ -67,6 +71,7 @@ body {
     }
     ?> 
     
+    <!-- Se muestra la info en los inputs, asi como se muestran inputs que llena el usuario-->
 <form action="" method="POST"> 
     <label ></label>
     <input type="hidden" name="id_cita" value="<?php echo $id_cita; ?>">
@@ -90,20 +95,11 @@ body {
         <input type="text" name="fecha_generacion" value="<?php echo $fecha_generacion; ?>">
 
 <input type="hidden" name="id_cita" value="<?php echo $id_cita; ?>">
-       
-        
-        
-        
-        
-       
-        
      <h2>Cuerpo del Recibo</h2>
      <label for="">Se pagaran: </label>
-      <input type="text" name="costo" placeholder="Costo" required>
-      
 
-      
-    
+     <!-- Botones para regresar a la pagina anterior asi como para enviar el formulario-->
+      <input type="text" name="costo" placeholder="Costo" required>
         <button type="submit" name="enviar">Guardar</button>
         <a href="../citas/index_citas.php">Regresar</a>
         </section>

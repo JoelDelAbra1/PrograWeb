@@ -21,9 +21,10 @@ body {
 }
 </style>
     <?php
-    if(isset($_POST['enviar'])){ //presiona el boton
-        include("../conexion.php");    
-        
+    // Verificar si se ha enviado el formulario
+    if(isset($_POST['enviar'])){ //Si se presiona el boton enviar
+            include("../conexion.php");// Se incluye el archivo de conexión a la base de datos 
+
         $id_doctor = $_POST['doctor'];
         $id_paciente = $_POST['id_paciente'];
         $hora_cita = $_POST['hora_cita'];
@@ -34,24 +35,32 @@ body {
         VALUES ( '$id_doctor', '$id_paciente'
         , '$hora_cita', '$fecha_cita')";
         $resultado = mysqli_query($conexion,$sql);
+        //Se verificar si la inserción fue exitosa
         if($resultado){
+            //Si es exitosa, se muestra un mensaje de éxito y se redirige a la página principal de paciente
             echo" <script languaje = 'JavaScript'>
             alert('Los datos fueron guardados');
             location.assign('../paciente/index_paciente.php');
             </script>";
         }else{
+            //Si falla, se muestra un mensaje de error y se redirige a la página principal de paciente
             echo" <script languaje = 'JavaScript'>
             alert('ERROR: Los datos NO fueron guardados');
             location.assign('../paciente/index_paciente.php');
             </script>";
         }
+            //Se cierra la conexion a la base de datos
         mysqli_close($conexion);
-    }else{
+        //Si no se ha presionado el boton de enviar
+    }else{// Se van a recuperar los datos y mostrarlos en los input
         $id_paciente=$_GET['Id_paciente'];
+        //Se crea y se ejecuta la consulta
         $sql="select * from paciente where id_paciente = '".$id_paciente."'";
         $resultado = mysqli_query($conexion,$sql);
-
+        // Se asigna el array asosiativo a la variable fila
         $fila= mysqli_fetch_assoc($resultado);
+        //La variable fila se asigna a los valores que se mostraran automaticamente
+        // al querer agregar un nuevo registro
         $id_paciente= $fila["id_paciente"];
         $nombre_paciente= $fila["nombre_paciente"];
         $Apellido_paterno=$fila["apellido_paterno"];
@@ -59,18 +68,22 @@ body {
         mysqli_close($conexion);
     }
     ?>
+    <!-- Estructura del formulario para agregar una nueva cita-->
 <form action="" method="POST">
     <h1>Agendar Cita</h1>
         <input type="hidden" name="id_paciente" value="<?php echo $id_paciente; ?>">
         <label for="">Nombre:</label>
-      <input type="text" readonly name="nombre_paciente" value="<?php echo $nombre_paciente; ?>">
+            <!-- Campo de entrada de texto para el nombre del paciente-->
+            <input type="text" readonly name="nombre_paciente" value="<?php echo $nombre_paciente; ?>">
       <label for="">Apellido Paterno:</label>
-      <input type="text" readonly name="apellido_paterno" value="<?php echo $Apellido_paterno; ?>">
+            <!-- Campo de entrada de texto para el apellido paterno del paciente-->
+            <input type="text" readonly name="apellido_paterno" value="<?php echo $Apellido_paterno; ?>">
       <label for="">Apellido Materno:</label>
-      <input type="text" readonly name="apellido_materno" value="<?php echo $Apellido_materno; ?>">
-       
+            <!-- Campo de entrada de texto para el apellido materno del paciente-->
+            <input type="text" readonly name="apellido_materno" value="<?php echo $Apellido_materno; ?>">
+            <!-- Campo de entrada de tiempo para la hora de la cita-->
       <input type="time" name="hora_cita" placeholder="Hora_cita">
-      
+            <!-- Campo de entrada de fecha para el dia de la cita-->
         <input type="date" name="fecha_cita" placeholder="Fecha_cita" >
         <label for="">Doctor</label>
         <select name="doctor" id="">
@@ -88,8 +101,9 @@ body {
         }
         ?>
        </select>
-    
+        <!-- Botón de envío del formulario -->
        <button type="submit" name="enviar">Enviar</button>
+       <!-- Enlace para regresar a la pagina inicial de paciente-->
         <a href="../paciente/index_paciente.php">Regresar</a>
     </section>
 </body>

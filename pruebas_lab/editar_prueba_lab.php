@@ -69,12 +69,16 @@ body {
                if(isset($id_prueba)) echo $id_prueba?>">
 
                <label for="">Nombre de la prueba:</label>
-       <input type="text" name="nombre_prueba" placeholder="Nombre de la prueba" value="<?php
+                <!-- Campo de entrada de texto para el nombre de la prueba-->
+                <input type="text" name="nombre_prueba" placeholder="Nombre de la prueba" value="<?php
                if(isset($nombre_prueba)) echo $nombre_prueba?>" required>
                <label for="">Tipo de prueba:</label>
-               <input type="text" name="tipo_prueba" placeholder="Tipo de prueba" value="<?php
+                <!-- Campo de entrada de texto para el tipo de la prueba-->
+                <input type="text" name="tipo_prueba" placeholder="Tipo de prueba" value="<?php
                if(isset($tipo_prueba)) echo $tipo_prueba?>" required>
+                <!-- Boton de envio del formulario-->
                <button type="submit" name="enviar">Enviar</button>
+                <!-- Enlace para regresar a la pagina inicial de consultorio-->
                <a href="index_prueba_lab.php">Regresar</a>
                </form>
            <?php

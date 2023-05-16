@@ -72,21 +72,27 @@ $id_paciente= $_POST['id_paciente'];
     
     ?>
     <h1>Editar Paciente</h1>
-    <form action="" method="post">
+    <form action="" method="post"><!-- Campo de entrada de texto para el nombre del paciente-->
     <input type="Hidden" name="id_paciente" placeholder="Id" value="<?php echo $id_paciente; ?>" required> <br>
     <label for="">Nombre:</label>
     <input type="text" name="nombre_paciente" placeholder="Nombre" value="<?php echo $nombre_paciente; ?>" required> <br>
     <label for="">Apellido Paterno:</label>
+        <!-- Campo de entrada de texto para el apellido paterno del paciente-->
         <input type="text" name="Apellido_paterno" placeholder="Apellido paterno" value="<?php echo $apellido_paterno; ?>" required> <br>
         <label for="">Apellido Materno:</label>
+        <!-- Campo de entrada de texto para el apellido materno del paciente-->
         <input type="text" name="Apellido_materno" placeholder="Apellido Materno" value="<?php echo $apellido_materno; ?>" required>  <br>
         <label for="">Colonia:</label>
+        <!-- Campo de entrada de texto para la colonia del paciente-->
         <input type="text" name="colonia_paciente" placeholder="Colonia" value="<?php echo $colonia_paciente; ?>" required> <br>
         <label for="">Calle:</label>
+        <!-- Campo de entrada de texto para la calle  paciente-->
         <input type="text" name="calle_paciente" placeholder="Calle" value="<?php echo $calle_paciente; ?>" required> <br>
         <label for="">Teléfono:</label>
+        <!-- Campo de entrada de telefono para el telefono del paciente-->
         <input type="tel" name="Telefono_paciente" placeholder="Teléfono" value="<?php echo $telefono_paciente; ?>" required> <br>
         <label for="">Fecha de Nacimineto</label>
+        <!-- Campo de entrada de fecha para la fecha de nacimiento del paciente-->
         <input type="date" name="fecha_nac" placeholder="Fecha de Nacimineto" value="<?php echo $fecha_nac; ?>" required>
         <label for="">Sucursal:</label>
         <select name="id_sucursal" id="">
@@ -109,7 +115,9 @@ $id_paciente= $_POST['id_paciente'];
         ?>
         
        </select>
-        <button type="submit" name="enviar">Enviar</button>
+       <!-- Boton de envio del formulario-->
+       <button type="submit" name="enviar">Enviar</button>
+        <!-- Enlace para regresar a la pagina inicial de consultorio-->
         <a href="index_paciente.php">Regresar</a>
         </form>
     <?php
